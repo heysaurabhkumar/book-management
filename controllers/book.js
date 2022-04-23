@@ -150,6 +150,20 @@ const filterBooks = catchAsync(async (req, res) => {
   });
 });
 
+const getReccomendedBooks = catchAsync(async (req, res) => {
+  const books = await Book.find({})
+    .sort({
+      issueCount: -1,
+    })
+    .limit(3);
+
+  res.status(httpStatus.OK).json({
+    success: true,
+    message: "Books fetched successfully",
+    books,
+  });
+});
+
 module.exports = {
   addBook,
   getAllBooks,
@@ -158,4 +172,5 @@ module.exports = {
   decreaseBookCopies,
   issueBook,
   filterBooks,
+  getReccomendedBooks,
 };

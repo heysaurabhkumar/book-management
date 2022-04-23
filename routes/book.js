@@ -30,4 +30,6 @@ router.put(
 router.put("/issue-book/:id", verifyToken, book.issueBook);
 router.post("/filter-books", book.filterBooks);
 
+router.get("/get-reccomended-books", book.getReccomendedBooks);
+
 module.exports = router;

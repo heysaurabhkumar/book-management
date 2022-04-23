@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import sagaActions from "../../saga/sagaActions";
 
 import FilterBooks from "../FilterBooks";
+import RecommendedBooks from "../RecommendedBooks";
 
 import {
   Button,
@@ -31,6 +32,7 @@ const User = () => {
     <>
       <Typography variant="h4">User</Typography>
       <Typography variant="h5">Welcome, {name}</Typography>
+      <RecommendedBooks />
       <FilterBooks />
       {books.length > 0 ? (
         <Typography variant="h5">Books</Typography>

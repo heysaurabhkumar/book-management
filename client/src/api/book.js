@@ -32,12 +32,13 @@ export default {
     });
   },
   filterBooks(filterData) {
-    return axios.post(
-      "http://localhost:5000/v1/book/filter-books",
-      filterData,
-      {
-        withCredentials: true,
-      }
-    );
+    return axios.post("/v1/book/filter-books", filterData, {
+      withCredentials: true,
+    });
+  },
+  getReccomendedBooks() {
+    return axios.get("/v1/book/get-reccomended-books", {
+      withCredentials: true,
+    });
   },
 };
