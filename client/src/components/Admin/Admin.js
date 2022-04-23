@@ -92,16 +92,16 @@ const Admin = () => {
                   <Button
                     type="button"
                     variant="outlined"
-                    onClick={() => handleIncrease(book._id)}
+                    onClick={() => handleDecrease(book._id)}
                   >
-                    + Copy
+                    - Copy
                   </Button>
                   <Button
                     type="button"
                     variant="outlined"
-                    onClick={() => handleDecrease(book._id)}
+                    onClick={() => handleIncrease(book._id)}
                   >
-                    - Copy
+                    + Copy
                   </Button>
                 </CardActions>
               </CardContent>
