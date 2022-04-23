@@ -38,7 +38,7 @@ const Login = () => {
     if (isLoggedIn) {
       navigate("/dashboard");
     }
-  }, [isLoggedIn]);
+  }, []);
   return (
     <>
       <Box

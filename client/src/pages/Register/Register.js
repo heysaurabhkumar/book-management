@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Avatar,
@@ -17,6 +17,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isLoggedIn } = useSelector((state) => state.user);
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -38,6 +40,11 @@ const Register = () => {
     navigate("/login");
   };
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    }
+  }, []);
   return (
     <>
       <Box
