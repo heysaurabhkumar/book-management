@@ -44,15 +44,24 @@ const Admin = () => {
 
   return (
     <>
-      <Button variant="contained" onClick={() => setViewAddBook(!viewAddBook)}>
+      <br />
+      <Button
+        variant="contained"
+        sx={{
+          margin: "1rem 0",
+        }}
+        onClick={() => setViewAddBook(!viewAddBook)}
+      >
         {viewAddBook ? "Hide Add Book" : "Add Book"}
       </Button>
       {viewAddBook && <AddBook />}
+      <br />
       {books.length > 0 ? (
         <Typography variant="h5">Books</Typography>
       ) : (
         <Typography variant="h5">No Books</Typography>
       )}
+      <br />
       <Grid container spacing={3}>
         {books.map((book) => (
           <Grid item key={book._id}>

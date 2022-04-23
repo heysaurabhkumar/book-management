@@ -29,13 +29,17 @@ const User = () => {
 
   return (
     <>
+      <br />
       <RecommendedBooks />
+      <br />
       <FilterBooks />
+      <br />
       {books.length > 0 ? (
         <Typography variant="h5">Books</Typography>
       ) : (
         <Typography variant="h5">No Books</Typography>
       )}
+      <br />
       <Grid container spacing={3}>
         {books.map((book) => (
           <Grid item key={book._id}>

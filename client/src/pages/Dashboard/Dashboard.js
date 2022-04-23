@@ -6,7 +6,7 @@ import sagaActions from "../../saga/sagaActions";
 import Admin from "../../components/Admin";
 import User from "../../components/User";
 
-import { Button, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -27,16 +27,29 @@ const Dashboard = () => {
   }, []);
   return (
     <>
-      <Typography variant="h4">{isAdmin ? "Admin" : "User"}</Typography>
-      <Typography variant="h5">Welcome, {name}</Typography>
-      <Button
-        type="button"
-        variant="outlined"
-        color="error"
-        onClick={handleLogout}
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          marginTop: 1,
+        }}
       >
-        Logout
-      </Button>
+        <Grid item xs={6}>
+          <Typography variant="h4">{isAdmin ? "Admin" : "User"}</Typography>
+          <Typography variant="h5">Welcome, {name}</Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Button
+            type="button"
+            variant="outlined"
+            color="error"
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        </Grid>
+      </Grid>
+
       {isAdmin ? <Admin /> : <User />}
     </>
   );
