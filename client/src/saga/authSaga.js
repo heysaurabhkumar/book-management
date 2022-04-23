@@ -21,9 +21,19 @@ function* logout() {
   }
 }
 
+function* register(action) {
+  try {
+    const { data } = yield auth.register(action.payload);
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default function* authSaga() {
   yield all([
     yield takeLatest(sagaActions.LOGIN, login),
     yield takeLatest(sagaActions.LOGOUT, logout),
+    yield takeLatest(sagaActions.REGISTER, register),
   ]);
 }

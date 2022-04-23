@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   Box,
   Avatar,
@@ -14,6 +15,8 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -31,6 +34,8 @@ const Register = () => {
 
   const handleSubmit = () => {
     console.log(user);
+    dispatch({ type: "REGISTER", payload: user });
+    navigate("/login");
   };
 
   return (

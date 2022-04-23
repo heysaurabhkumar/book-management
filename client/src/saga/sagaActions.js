@@ -8,4 +8,5 @@ export default {
   ISSUE_BOOK: "ISSUE_BOOK",
   FILTER_BOOKS: "FILTER_BOOKS",
   LOGOUT: "LOGOUT",
+  REGISTER: "REGISTER",
 };
