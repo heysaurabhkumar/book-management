@@ -28,12 +28,11 @@ const registerUser = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).json({
     success: true,
     message: "User created successfully",
-    data: {
-      user: {
-        name: newUser.name,
-        email: newUser.email,
-        isAdmin: newUser.isAdmin,
-      },
+    user: {
+      _id: newUser._id,
+      name: newUser.name,
+      email: newUser.email,
+      isAdmin: newUser.isAdmin,
     },
   });
 });
@@ -75,12 +74,11 @@ const loginUser = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).json({
     success: true,
     message: "User logged in successfully",
-    data: {
-      user: {
-        name: user.name,
-        email: user.email,
-        isAdmin: user.isAdmin,
-      },
+    user: {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
     },
   });
 });

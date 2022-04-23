@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Avatar,
@@ -9,8 +10,12 @@ import {
   Grid,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import sagaActions from "../../saga/sagaActions";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isLoggedIn } = useSelector((state) => state.user);
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -25,8 +30,15 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    console.log(user);
+    dispatch({ type: sagaActions.LOGIN, payload: user });
+    navigate("/dashboard");
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    }
+  }, [isLoggedIn]);
   return (
     <>
       <Box
