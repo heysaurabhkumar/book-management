@@ -53,6 +53,26 @@ function* decreaseBookCopies(action) {
   }
 }
 
+function* issueBook(action) {
+  try {
+    const { data } = yield book.issueBook(action.payload);
+    console.log(data);
+    yield put(booksActions.issueBooks(data.book));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* filterBooks(action) {
+  try {
+    const { data } = yield book.filterBooks(action.payload);
+    console.log(data);
+    yield put(booksActions.setBooks(data.books));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default function* bookSaga() {
   yield all([
     yield takeLatest(sagaActions.ADD_BOOK, addBook),
@@ -60,5 +80,7 @@ export default function* bookSaga() {
     yield takeLatest(sagaActions.DELETE_BOOK, deleteBook),
     yield takeLatest(sagaActions.INCREASE_BOOK_COPIES, increaseBookCopies),
     yield takeLatest(sagaActions.DECREASE_BOOK_COPIES, decreaseBookCopies),
+    yield takeLatest(sagaActions.ISSUE_BOOK, issueBook),
+    yield takeLatest(sagaActions.FILTER_BOOKS, filterBooks),
   ]);
 }

@@ -26,4 +26,18 @@ export default {
       withCredentials: true,
     });
   },
+  issueBook(id) {
+    return axios.put(`/v1/book/issue-book/${id}`, {
+      withCredentials: true,
+    });
+  },
+  filterBooks(filterData) {
+    return axios.post(
+      "http://localhost:5000/v1/book/filter-books",
+      filterData,
+      {
+        withCredentials: true,
+      }
+    );
+  },
 };

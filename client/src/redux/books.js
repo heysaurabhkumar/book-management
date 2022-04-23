@@ -29,6 +29,12 @@ const booksSlice = createSlice({
         book._id === action.payload._id ? action.payload : book
       );
     },
+    issueBooks: (state, action) => {
+      console.log(action.payload);
+      return state.map((book) =>
+        book._id === action.payload._id ? action.payload : book
+      );
+    },
   },
 });
 
