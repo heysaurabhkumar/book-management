@@ -31,7 +31,9 @@ const Login = () => {
 
   const handleSubmit = () => {
     dispatch({ type: sagaActions.LOGIN, payload: user });
-    navigate("/dashboard");
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 1000);
   };
 
   useEffect(() => {
