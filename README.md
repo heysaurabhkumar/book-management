@@ -11,3 +11,4 @@
 1. cd to the client directory of the project
 2. run `npm install`
 3. run `npm start`
+4. open http://localhost:3000/
