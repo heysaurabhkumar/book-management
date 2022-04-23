@@ -74,6 +74,13 @@ const Admin = () => {
                 <Typography variant="body2" component="p">
                   Number of copies: {book.noOfCopies}
                 </Typography>
+                <Typography variant="body2" component="p">
+                  Number of copies issued: {book.issueCount}
+                </Typography>
+                <Typography variant="body2" component="p">
+                  Number of copies available:{" "}
+                  {book.noOfCopies - book.issueCount}
+                </Typography>
                 <CardActions>
                   <Button
                     variant="outlined"

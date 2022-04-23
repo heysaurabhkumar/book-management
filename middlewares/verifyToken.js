@@ -1,8 +1,6 @@
 const jwt = require("jsonwebtoken");
 const httpStatus = require("http-status");
 
-const { User } = require("../models/user");
-
 const verifyToken = async (req, res, next) => {
   try {
     const token = req.cookies.token;
@@ -13,15 +11,8 @@ const verifyToken = async (req, res, next) => {
       });
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.id);
-    if (!user) {
-      return res.status(httpStatus.UNAUTHORIZED).json({
-        success: false,
-        message: "User does not exist",
-      });
-    }
-    req.userId = user._id;
-    req.isAdmin = user.isAdmin;
+    req.userId = decoded._id;
+    req.isAdmin = decoded.isAdmin;
     next();
   } catch (err) {
     return res.status(httpStatus.UNAUTHORIZED).json({
