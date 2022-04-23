@@ -16,7 +16,6 @@ import {
 
 const User = () => {
   const dispatch = useDispatch();
-  const { name } = useSelector((state) => state.user);
 
   const books = useSelector((state) => state.books);
 
@@ -30,8 +29,6 @@ const User = () => {
 
   return (
     <>
-      <Typography variant="h4">User</Typography>
-      <Typography variant="h5">Welcome, {name}</Typography>
       <RecommendedBooks />
       <FilterBooks />
       {books.length > 0 ? (

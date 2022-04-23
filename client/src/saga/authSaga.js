@@ -12,6 +12,18 @@ function* login(action) {
   }
 }
 
+function* logout() {
+  try {
+    yield auth.logout();
+    yield put(userActions.logout());
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default function* authSaga() {
-  yield all([yield takeLatest(sagaActions.LOGIN, login)]);
+  yield all([
+    yield takeLatest(sagaActions.LOGIN, login),
+    yield takeLatest(sagaActions.LOGOUT, logout),
+  ]);
 }

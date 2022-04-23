@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Box,
   Avatar,
@@ -6,7 +7,9 @@ import {
   TextField,
   Button,
   Grid,
-  Link,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
@@ -44,7 +47,7 @@ const Register = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Register
         </Typography>
         <Box sx={{ mt: 1 }}>
           <TextField
@@ -83,6 +86,28 @@ const Register = () => {
             value={user.password}
             autoComplete="new-password"
           />
+          <RadioGroup
+            name="isAdmin"
+            value={user.isAdmin}
+            onChange={handleChange}
+          >
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <FormControlLabel
+                  value={false}
+                  control={<Radio />}
+                  label="User"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <FormControlLabel
+                  value={true}
+                  control={<Radio />}
+                  label="Admin"
+                />
+              </Grid>
+            </Grid>
+          </RadioGroup>
           <Button
             type="button"
             fullWidth
@@ -90,13 +115,11 @@ const Register = () => {
             sx={{ mt: 3, mb: 2 }}
             onClick={handleSubmit}
           >
-            Sign Up
+            Register
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="/login" variant="body2">
-                Already have an account? Sign in
-              </Link>
+              <Link to="/login">Already have an account? Sign in</Link>
             </Grid>
           </Grid>
         </Box>

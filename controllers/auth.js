@@ -83,7 +83,17 @@ const loginUser = catchAsync(async (req, res) => {
   });
 });
 
+const logoutUser = catchAsync(async (req, res) => {
+  res.clearCookie("token");
+
+  res.status(httpStatus.OK).json({
+    success: true,
+    message: "User logged out successfully",
+  });
+});
+
 module.exports = {
   registerUser,
   loginUser,
+  logoutUser,
 };

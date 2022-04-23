@@ -15,7 +15,6 @@ import {
 
 const Admin = () => {
   const dispatch = useDispatch();
-  const { name } = useSelector((state) => state.user);
   const [viewAddBook, setViewAddBook] = React.useState(false);
   const books = useSelector((state) => state.books);
 
@@ -45,9 +44,6 @@ const Admin = () => {
 
   return (
     <>
-      <Typography variant="h4">Admin</Typography>
-      <Typography variant="h5">Welcome, {name}</Typography>
-
       <Button variant="contained" onClick={() => setViewAddBook(!viewAddBook)}>
         {viewAddBook ? "Hide Add Book" : "Add Book"}
       </Button>

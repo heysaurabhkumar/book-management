@@ -12,6 +12,16 @@ const userSlice = createSlice({
         isLoggined: true,
       };
     },
+    logout: (state) => {
+      return {
+        ...state,
+        _id: "",
+        name: "",
+        email: "",
+        isAdmin: "",
+        isLoggined: false,
+      };
+    },
   },
 });
 
